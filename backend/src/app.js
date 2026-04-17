@@ -20,10 +20,26 @@ app.use("/api/v1/users",userRoutes) // this type we create multiple if you give 
 
 const start = async () => {
     app.set("mongoose user");
-    const connectinDb=await mongoose.connect("mongodb+srv://javacss77_db_user:bUqmNKYeWvXDFvAY@cluster2.ei0cttg.mongodb.net/");
-    console.log(`connecton mongo  db host ${connectinDb.connection.host}`)
+    try {
+      const connectinDb=await mongoose.connect(
+        "mongodb+srv://javacss77_db_user:bUqmNKYeWvXDFvAY@cluster2.ei0cttg.mongodb.net/",
+        {
+          retryWrites: false,
+          ssl: true,
+          tlsAllowInvalidCertificates: true,
+          socketTimeoutMS: 45000,
+          serverSelectionTimeoutMS: 10000,
+        }
+      );
+      console.log(`connecton mongo  db host ${connectinDb.connection.host}`)
+    } catch (dbError) {
+      console.error("MongoDB connection failed:", dbError.message);
+      console.log("Server will run without database for now");
+    }
+    
   server.listen(app.get("port"), () => {
-    console.log(`Server running at http://127.0.0.1:${PORT}/home`);
+    console.log(`Server running at http://127.0.0.1:${PORT}`);
+    console.log(`Available routes: POST /api/v1/users/login, POST /api/v1/users/register, GET /api/v1/users/home`);
   });
 };
 
