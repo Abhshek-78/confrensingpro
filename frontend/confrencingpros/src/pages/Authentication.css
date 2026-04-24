@@ -1,0 +1,152 @@
+/* Container */
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--black);
+  position: relative;
+}
+
+/* Logo Top Left */
+.logo {
+  position: absolute;
+  top: -5px;
+  left: 700px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 222px;
+}
+
+.logo span {
+  font-family: var(--font-display);
+  font-size: 20px;
+ 
+}
+
+.logo span em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+/* Form Box */
+.form-box {
+  background: var(--card);
+  padding: 40px;
+  width: 350px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  text-align: center;
+  position: relative;
+}
+.form-box span{
+  color:var(--gold); ;
+}
+
+/* Title */
+.form-box h2 {
+  font-family: var(--font-display);
+  margin-bottom: 25px;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid var(--card-border);
+  background: var(--navy);
+  color: var(--text);
+  outline: none;
+}
+
+/* Input focus */
+input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px var(--gold-glow);
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 12px;
+  background: var(--gold);
+  border: none;
+  border-radius: 6px;
+  color: var(--black);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--gold-light);
+}
+
+.toggle-buttons {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  
+}
+
+.toggle-buttons button {
+  width: auto;
+  min-width: 88px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  background: transparent;
+  
+  color: var(--text);
+}
+
+.toggle-buttons button.active {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+
+}
+.toggle-buttons {
+  display: flex;
+  gap: 0px;   /* 👈 REMOVE or set to 0 */
+}
+.logo img{
+    animation: floatLogo 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(201,168,76,0.4));;
+
+}
+@keyframes floatLogo {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.03);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+/* Golden glowing shadow pulse */
+.logo img {
+  animation: floatLogo 4s ease-in-out infinite,
+             glowLogo 3s ease-in-out infinite;
+}
+
+@keyframes glowLogo {
+  0% {
+    filter: drop-shadow(0 0 6px rgba(201,168,76,0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(201,168,76,0.7));
+  }
+  100% {
+    filter: drop-shadow(0 0 6px rgba(201,168,76,0.3));
+  }
+}

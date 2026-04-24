@@ -13,7 +13,7 @@ const login=async (req,res)=>{
     if(!user){
         return res.status(httpStatus.NOT_FOUND).json({message:"proveide valid username"})
     }
-    if(bcrypt.compare(password,user.password)){
+    if(await bcrypt.compare(password,user.password)){
         let token=crypto.randomBytes(20).toString( "hex");
         user.token=token;
         await  user.save();

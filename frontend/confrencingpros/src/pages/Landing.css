@@ -273,6 +273,28 @@ body {
   text-decoration: none;
   transition: background .22s, transform .22s, box-shadow .22s;
 }
+.btn-gold1 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 2px;
+  background: var(--black);
+  color: var(--gold);;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .22s, transform .22s, box-shadow .22s;
+}
+.btn-gold1:hover {
+  background-color: #684BDC;
+  color: whitesmoke;
+  
+}
 .btn-gold:hover {
   background: var(--gold-light);
   transform: translateY(-2px);
