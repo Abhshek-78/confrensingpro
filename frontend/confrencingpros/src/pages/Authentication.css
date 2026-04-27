@@ -1,4 +1,4 @@
-/* Container */
+
 .container {
   min-height: 100vh;
   display: flex;
@@ -8,7 +8,7 @@
   position: relative;
 }
 
-/* Logo Top Left */
+
 .logo {
   position: absolute;
   top: -5px;
@@ -47,13 +47,12 @@
   color:var(--gold); ;
 }
 
-/* Title */
+
 .form-box h2 {
   font-family: var(--font-display);
   margin-bottom: 25px;
 }
 
-/* Inputs */
 input {
   width: 100%;
   padding: 12px;
@@ -65,13 +64,13 @@ input {
   outline: none;
 }
 
-/* Input focus */
+
 input:focus {
   border-color: var(--gold);
   box-shadow: 0 0 0 2px var(--gold-glow);
 }
 
-/* Button */
+
 button {
   width: 100%;
   padding: 12px;

@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   const [userData, setUserdata] = useState(null);
   const router = useNavigate();
 
-  // ✅ REGISTER
+  
   const handleRegister = async (name, username, password) => {
     try {
       const request = await client.post("/register", {
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // ✅ LOGIN (NEW)
+  
   const handleLogin = async (username, password) => {
     try {
       const request = await client.post("/login", {
