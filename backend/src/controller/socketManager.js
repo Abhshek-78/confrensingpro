@@ -2,6 +2,7 @@ import { Server, Socket } from "socket.io";
 let connections = {};
 let messages = {};
 let timeonline = {};
+let usernames = {};
 
 export const connectToSocket = (server) => {
     const io = new Server(server, {
@@ -14,16 +15,21 @@ export const connectToSocket = (server) => {
     });
 
     io.on("connection", (socket) => {
-        socket.on("join call", (path) => {
+        socket.on("join call", (data) => {
+            const path = typeof data === 'string' ? data : data.path;
+            const username = typeof data === 'string' ? socket.id : (data.username || socket.id);
+            
             if (connections[path] === undefined) {
                 connections[path] = [];
+                usernames[path] = {};
             }
             connections[path].push(socket.id);
+            usernames[path][socket.id] = username;
             timeonline[socket.id] = new Date();
             
             // Notify all users in the room about new user
             for (let a = 0; a < connections[path].length; a++) {
-                io.to(connections[path][a]).emit("user join", socket.id, connections[path]);
+                io.to(connections[path][a]).emit("user join", socket.id, connections[path], usernames[path]);
             }
             
             // Send existing messages to new user
