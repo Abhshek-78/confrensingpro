@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./Landing.css";
 import logoImg from "../utils/confreneview.png";
 import sideimg from "../utils/newcorr.png";
-/* ─── NAVBAR ─────────────────────────────────────── */
+
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -33,7 +33,6 @@ function Navbar() {
   );
 }
 
-/* ─── REVEAL HOOK ─────────────────────────────────── */
 function useReveal(delay = 0) {
   const ref = useRef(null);
   useEffect(() => {
@@ -54,9 +53,6 @@ function useReveal(delay = 0) {
   return ref;
 }
 
-
-
-/* ─── 3D SPHERE ─────────────────────────────────── */
 function SphereScene() {
   return (
     <div className="sphere-scene">
@@ -65,7 +61,6 @@ function SphereScene() {
   );
 }
 
-/* ─── 3D CUBE ───────────────────────────────────── */
 function CubeScene() {
   return (
     <div className="cube-scene">
@@ -80,7 +75,6 @@ function CubeScene() {
   );
 }
 
-/* ─── HERO ──────────────────────────────────────── */
 function Hero() {
   return (
     <section className="hero">
@@ -114,7 +108,7 @@ function Hero() {
   );
 }
 
-/* ─── STATS ─────────────────────────────────────── */
+
 const STATS = [
   { num: "95+",     label: "Languages Supported" },
   { num: "0.3s",    label: "Translation Latency"  },
@@ -137,7 +131,7 @@ function StatsBar() {
   );
 }
 
-/* ─── FEATURES ──────────────────────────────────── */
+
 const FEATURES = [
   { icon:"🌐", title:"50+ Languages",       desc:"Real-time AI translation across 50+ languages with accuracy that preserves tone, nuance, and full intent." },
   { icon:"📹", title:"HD Video & Audio",    desc:"Crystal-clear communication with adaptive quality for any connection — from boardrooms to remote desktops." },
@@ -185,7 +179,6 @@ function FeaturesSection() {
   );
 }
 
-/* ─── TRUST SECTION ─────────────────────────────── */
 const TRUST_POINTS = [
   "AI-powered cultural context awareness",
   "Tone and sentiment preservation",
@@ -225,7 +218,6 @@ function TrustSection() {
   );
 }
 
-/* ─── LANGUAGES ─────────────────────────────────── */
 const LANGS = [
   "🇺🇸 English","🇨🇳 Mandarin","🇪🇸 Spanish","🇸🇦 Arabic",
   "🇫🇷 French","🇩🇪 German","🇯🇵 Japanese","🇮🇳 Hindi",
@@ -255,7 +247,7 @@ function LanguagesSection() {
   );
 }
 
-/* ─── CTA ───────────────────────────────────────── */
+
 function CtaSection() {
   const ref = useReveal(0);
   return (
@@ -280,7 +272,7 @@ function CtaSection() {
   );
 }
 
-/* ─── FOOTER ────────────────────────────────────── */
+
 function Footer() {
   return (
     <footer className="footer">
@@ -301,8 +293,6 @@ function Footer() {
     </footer>
   );
 }
-
-/* ─── ROOT ──────────────────────────────────────── */
 export default function Landing() {
   return (
     <>
