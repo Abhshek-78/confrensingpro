@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -11,7 +11,23 @@ const client = axios.create({
 export const AuthProvider = ({ children }) => {
 
   const [userData, setUserdata] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useNavigate();
+
+  // Check if user is already logged in on mount
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        // You can verify token with backend here if needed
+        setUserdata({ token });
+      } catch (error) {
+        console.error("Token verification failed:", error);
+        localStorage.removeItem("token");
+      }
+    }
+    setIsLoading(false);
+  }, []);
 
   
   const handleRegister = async (name, username, password) => {
@@ -59,11 +75,18 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const handleLogout = () => {
+    setUserdata(null);
+    localStorage.removeItem("token");
+  };
+
   const data = {
     userData,
     setUserdata,
     handleRegister,
-    handleLogin   
+    handleLogin,
+    handleLogout,
+    isLoading
   };
 
   return (

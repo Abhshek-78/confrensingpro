@@ -112,20 +112,95 @@ body {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   list-style: none;
 }
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
 .nav-links a {
   color: var(--muted);
   text-decoration: none;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.05em;
-  padding: 2px 10px;
+  padding: 8px 12px;
   border-radius: 5px;
   transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+  display: block;
 }
-.nav-links a:hover { color: var(--gold-light); background: rgba(201,168,76,0.07); }
+
+.nav-links a:hover { 
+  color: var(--gold-light); 
+  background: rgba(201,168,76,0.07); 
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+  font-family: var(--font-body);
+  white-space: nowrap;
+  display: block;
+}
+
+.nav-button:hover { 
+  color: var(--gold-light); 
+  background: rgba(201,168,76,0.07); 
+}
+
+.btn-gold1-link {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 1px solid var(--gold);
+  border-radius: 5px;
+  color: var(--gold);
+  font-weight: 600;
+  background: transparent;
+  transition: background 0.22s, color 0.22s;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.btn-gold1-link:hover { 
+  background: var(--gold); 
+  color: var(--black); 
+}
+
+.nav-logout-btn {
+  background: rgba(201,168,76,0.15);
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  font-family: var(--font-body);
+  white-space: nowrap;
+}
+
+.nav-logout-btn:hover {
+  background: rgba(201,168,76,0.25);
+  border-color: var(--gold-light);
+  color: var(--gold-light);
+}
 
 .nav-cta {
   padding: 8px 20px !important;
@@ -136,7 +211,11 @@ body {
   background: transparent !important;
   transition: background 0.22s, color 0.22s !important;
 }
-.nav-cta:hover { background: var(--gold) !important; color: var(--black) !important; }
+
+.nav-cta:hover { 
+  background: var(--gold) !important; 
+  color: var(--black) !important; 
+}
 
 
 .hero {

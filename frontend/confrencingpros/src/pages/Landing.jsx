@@ -1,32 +1,53 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Landing.css";
 import logoImg from "../utils/confreneview.png";
 import sideimg from "../utils/newcorr.png";
+import { Authcontext } from "../contexts/Authcontex.jsx";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const { userData, handleLogout } = useContext(Authcontext);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 36);
     window.addEventListener("scroll", fn);
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
+  const generateRandomRoom = () => {
+    const randomId = Math.random().toString(36).substring(2, 11);
+    navigate(`/${randomId}`);
+  };
+
+  const handleLogoutClick = () => {
+    handleLogout();
+    navigate("/");
+  };
+
   return (
     <nav className={`navbar${scrolled ? " scrolled" : ""}`}>
       <div className="wrap">
-        <a href="#" className="nav-logo">
+        <Link to="/" className="nav-logo">
             <img src={logoImg} alt="Conferencing Pro Logo" className="logo-img" />
           Conferencing<span className="gld">Pro</span>
-        </a>
+        </Link>
         <ul className="nav-links">
           <li><a href="#features">Features</a></li>
           <li><a href="#languages">Languages</a></li>
           <li><a href="#trust">Security</a></li>
           <li><a href="#cta">Enterprise</a></li>
-          <button className="btn-gold1">
-            <link to={"/auth"}/> Register
-          </button>
           
+          {userData ? (
+            <>
+              <li><button onClick={generateRandomRoom} className="nav-button">Create Meeting</button></li>
+              <li><button onClick={generateRandomRoom} className="nav-button">Join Meeting</button></li>
+              <li><button onClick={handleLogoutClick} className="nav-logout-btn">Logout</button></li>
+            </>
+          ) : (
+            <li><Link to="/auth" className="btn-gold1-link">Register</Link></li>
+          )}
         </ul>
       </div>
     </nav>

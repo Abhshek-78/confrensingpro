@@ -74,7 +74,6 @@ export default function VideoMeet() {
   const videoRef = useRef([]);
   let [videos, setVideos] = useState([]);
 
-  /* ── new UI state ── */
   const [isVideoEnabled, setIsVideoEnabled] = useState(true);
   const [isAudioEnabled, setIsAudioEnabled] = useState(true);
   const [isSharingScreen, setIsSharingScreen] = useState(false);
@@ -347,7 +346,7 @@ export default function VideoMeet() {
     getMedia();
   };
 
-  // Calculate grid columns based on total participant count
+ 
   const totalCount = videos.length + 1;
   const gridCols = totalCount === 1 ? 1
     : totalCount === 2 ? 2
@@ -433,7 +432,6 @@ export default function VideoMeet() {
   return (
     <div className="cp-app">
 
-      {/* ─────────────── LOBBY ─────────────── */}
       {askForUsername ? (
         <div className="cp-lobby">
           <div className="cp-lobby__glow" />
@@ -487,7 +485,6 @@ export default function VideoMeet() {
         {/* Header */}
         <header className="cp-header">
           <div className="cp-header__left">
-            <span className="cp-header__gem">◆</span>
             <span className="cp-header__brand">ConferencingPro</span>
             <span className="cp-header__divider" />
             <span className="cp-header__timer">{fmtTime(meetSec)}</span>
@@ -503,13 +500,13 @@ export default function VideoMeet() {
           </div>
         </header>
 
-        {/* Main area */}
+       
         <div className="cp-main">
 
-          {/* Video grid — gridCols from original logic */}
+         
           <div className="cp-grid" style={{ gridTemplateColumns: `repeat(${gridCols}, 1fr)` }}>
 
-            {/* Local tile */}
+         
             <div className="cp-tile cp-tile--local">
               <video ref={localVideoRef} autoPlay muted className="cp-tile__vid" />
               {!isVideoEnabled && (
@@ -526,7 +523,7 @@ export default function VideoMeet() {
               </div>
             </div>
 
-            {/* Remote tiles */}
+          
             {videos.map((vid) => (
               <div key={vid.socketId} className="cp-tile">
                 <video
